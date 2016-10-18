@@ -24,8 +24,8 @@
       <file leaf-file-name="client.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/a1/src/client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
-              <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+            <state relative-caret-position="401">
+              <caret line="51" column="54" selection-start-line="51" selection-start-column="54" selection-end-line="51" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -33,14 +33,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/a1/src/server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="52" column="59" selection-start-line="52" selection-start-column="59" selection-end-line="52" selection-end-column="59" />
+            <state relative-caret-position="-45">
+              <caret line="16" column="31" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReadMe.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/a1/ReadMe.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -87,10 +97,10 @@
         <option value="$PROJECT_DIR$/a1/src/TCPClient.java" />
         <option value="$PROJECT_DIR$/a1/src/server.sh" />
         <option value="$PROJECT_DIR$/a1/src/client.sh" />
-        <option value="$PROJECT_DIR$/a1/ReadMe.txt" />
         <option value="$PROJECT_DIR$/a1/Makefile" />
         <option value="$PROJECT_DIR$/a1/src/client.java" />
         <option value="$PROJECT_DIR$/a1/src/server.java" />
+        <option value="$PROJECT_DIR$/a1/ReadMe.txt" />
       </list>
     </option>
   </component>
@@ -551,14 +561,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/a2/src/hello.java" />
-    <entry file="file://$PROJECT_DIR$/a1/ReadMe.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/a1/Makefile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -585,8 +587,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/a1/src/client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+        <state relative-caret-position="401">
+          <caret line="51" column="54" selection-start-line="51" selection-start-column="54" selection-end-line="51" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -595,11 +597,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/a1/src/server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="52" column="59" selection-start-line="52" selection-start-column="59" selection-end-line="52" selection-end-column="59" />
+        <state relative-caret-position="-45">
+          <caret line="16" column="31" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/a1/ReadMe.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -15,7 +15,8 @@ Step 3: Connect the client to the server and reverse the string
 
 
 Hostname:
-    v1020-wn-1-4.campus-dynamic.uwaterloo.ca
+    1st Machine: ubuntu1404-010.student.cs.uwaterloo.ca
+    2nd Machine: ubuntu1404-004.student.cs.uwaterloo.ca
 
 Make version:
     GNU Make 3.81
