@@ -36,6 +36,7 @@ public class serverGBN { // server Go Back N
         byte[] data = dataPacket.getUDPdata();
         DatagramPacket sendPacket = new DatagramPacket(data, data.length, this.IPAddress, this.emulatorReceivePort);
         try {
+            System.out.println("Sending- Type: " + dataPacket.getType() + " SeqNum: " + dataPacket.getSeqNum());
             this.socket.send(sendPacket);
         } catch (Exception e) {
             System.out.println("Error sending packet seqNum: " + dataPacket.getSeqNum() + ", " + e);
@@ -58,8 +59,9 @@ public class serverGBN { // server Go Back N
             }
             socket.receive(receivePacket);
             received = packet.parseUDPdata(data);
+            System.out.println("Received- Type: " + received.getType() + " SeqNum: " + received.getSeqNum());
         } catch (Exception e) {
-            System.out.println("Error receiving packet: " + e);
+            // Packet was not received and there was a timeout. Skip iteration!
             received = null;
         }
         return received;

@@ -64,6 +64,7 @@ public class sender {
                 }
 
                 // Send first 10 packets in queue
+                System.out.println("Send first 10 packets");
                 sender.sendAllPackets(packetQueue, seqNumLog);
 
                 Date beginTime = new Date();
@@ -75,6 +76,7 @@ public class sender {
 
                     // Timeout handler
                     if (currentTime.getTime() - beginTime.getTime() > timeout) {
+                        System.out.println("Timeout occurred. Resending all packets in queue.");
                         sender.sendAllPackets(packetQueue, seqNumLog);
                         beginTime = currentTime;
                     }
@@ -86,7 +88,7 @@ public class sender {
                             continue;
                         }
                     } catch (Exception e) {
-                        System.out.println("Error receiving packet: " + e);
+                        // Packet was not received and there was a timeout. Skip iteration!
                         continue;
                     }
 
@@ -127,6 +129,8 @@ public class sender {
 
                 seqNumLog.close();
                 ackLog.close();
+
+                System.out.println("End!");
             } catch (Exception e) {
                 System.out.println("Error: " + e);
             }

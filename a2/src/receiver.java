@@ -45,6 +45,7 @@ public class receiver {
 
                 outFile.close();
                 arrivalLog.close();
+                System.out.println("End!");
             } catch (Exception e) {
                 System.out.println("Error with Receiver: " + e);
             }
