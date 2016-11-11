@@ -21,10 +21,11 @@ public class sender {
                 PrintWriter seqNumLog = new PrintWriter("seqnum.log", "UTF-8");
                 PrintWriter ackLog = new PrintWriter("ack.log", "UTF-8");
                 ArrayList<String> dataList = new ArrayList<>();
-                // Parse file
-                try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+
+                // Take file name and parse file data into array of strings that are max 500 chars
+                try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
                     String fileLine;
-                    while ((fileLine = br.readLine()) != null) {
+                    while ((fileLine = reader.readLine()) != null) {
                         if (fileLine.length() > dataMaxSize) {
                             // Line is too large, split line up
                             int splits = fileLine.length()/dataMaxSize;
@@ -43,6 +44,8 @@ public class sender {
                     System.out.println("Error reading file: " + e);
                 }
 
+
+                // Begin to send data from string array
                 int timeout = 100;
                 serverGBN sender = new serverGBN(emulatorName, senderDataPort, emulatorACKPort);
                 int seqNum = 0;
@@ -52,7 +55,7 @@ public class sender {
                 int dataListSize = dataList.size();
                 LinkedList<packet> packetQueue = new LinkedList<>();
 
-                // Start with First 10 Packets
+                // Start with First 10 Packets, send them to queue
                 int initLimit = Math.min(windowSize, dataListSize);
                 for (int i = 0; i < initLimit; i++) {
                     packetQueue.add(sender.createPacket(seqNum, dataList.get(i)));
@@ -60,47 +63,47 @@ public class sender {
                     dataIndex++;
                 }
 
-                // Send first 10 packets
+                // Send first 10 packets in queue
                 sender.sendAllPackets(packetQueue, seqNumLog);
 
                 Date beginTime = new Date();
 
+                // Begin loop for remaining packets
                 while (!packetQueue.isEmpty()) {
                     packet receivedPacket;
                     Date currentTime = new Date();
 
-                    // Timeout
+                    // Timeout handler
                     if (currentTime.getTime() - beginTime.getTime() > timeout) {
-                        System.out.println("Timeout! Sending all packets");
                         sender.sendAllPackets(packetQueue, seqNumLog);
                         beginTime = currentTime;
                     }
 
+                    // Ensure packet is received from the receiver, otherwise end this loop iteration
                     try {
                         receivedPacket = sender.receivePacket(true);
+                        if (receivedPacket == null) {
+                            continue;
+                        }
                     } catch (Exception e) {
                         System.out.println("Error receiving packet: " + e);
                         continue;
                     }
 
-                    if (receivedPacket == null) {
-                        continue;
-                    }
-
+                    // At this point, packet has been received
                     int receivedSeqNum = receivedPacket.getSeqNum();
                     if (receivedSeqNum >= base) {
                         // Update base. All packets before receivedSeqNum have been acked
-                        System.out.println("Received ACK: " + receivedPacket.getSeqNum() + ", ackFromReceiver");
 
                         int numAcked = receivedSeqNum - base + 1;
+                        // Remove the n acked packets from the queue
                         for (int i = 0; i < numAcked; i++) {
-                            System.out.println("Removing packet: " + packetQueue.peekFirst().getSeqNum());
                             packetQueue.removeFirst();
                         }
 
+                        // Add n packets to the queue if there are any in the string array
                         for (int i = 0; i < numAcked; i++) {
                             if (dataIndex < dataListSize) {
-                                System.out.println("Adding packet: " + seqNum + " to queue");
                                 packetQueue.add(sender.createPacket(seqNum, dataList.get(dataIndex)));
                                 sender.sendDataPacket(packetQueue.getLast(), seqNumLog);
                                 seqNum++;
@@ -108,13 +111,13 @@ public class sender {
                             }
                         }
 
+                        // Update base and seqNum accordingly
                         base = (base + numAcked) % 32;
                         seqNum = seqNum % 32;
                     } else {
-                        System.out.println("Received Ack: " + receivedSeqNum + ". Ignoring.");
+                        // Ignore duplicate acks.
                         continue;
                     }
-
 
                 }
 

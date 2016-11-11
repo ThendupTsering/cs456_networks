@@ -6,7 +6,7 @@ import java.util.LinkedList;
 /**
  * Created by Thendup on 2016-11-09.
  */
-public class serverGBN {
+public class serverGBN { // server Go Back N
 
     private InetAddress IPAddress;
     private int emulatorReceivePort;
@@ -36,13 +36,6 @@ public class serverGBN {
         byte[] data = dataPacket.getUDPdata();
         DatagramPacket sendPacket = new DatagramPacket(data, data.length, this.IPAddress, this.emulatorReceivePort);
         try {
-            if (dataPacket.getType() == 0) {
-                System.out.println("Sending ACK: " + dataPacket.getSeqNum() + ", ackData" );
-            } else if (dataPacket.getType() == 1) {
-                System.out.println("Sending Packet: " + dataPacket.getSeqNum() + ", " + new String(dataPacket.getData()));
-            } else {
-                System.out.println("Sending EOT");
-            }
             this.socket.send(sendPacket);
         } catch (Exception e) {
             System.out.println("Error sending packet seqNum: " + dataPacket.getSeqNum() + ", " + e);
@@ -54,7 +47,6 @@ public class serverGBN {
             this.sendDataPacket(p, seqNumLog);
         }
     }
-
 
     public packet receivePacket(boolean timeout) {
         byte[] data = new byte[1024];
@@ -71,9 +63,5 @@ public class serverGBN {
             received = null;
         }
         return received;
-    }
-
-    public void beginReceive() {
-
     }
 }

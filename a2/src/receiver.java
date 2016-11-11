@@ -23,17 +23,19 @@ public class receiver {
                     packet arrived = receiver.receivePacket(false);
                     packet respondPacket;
                     if (arrived.getType() == 2) {
-                        System.out.println("Received EOT packet!");
+                        // EOT Packet received, signal end of while loop
                         lastPacketReceived = true;
                         respondPacket = packet.createEOT(arrived.getSeqNum());
                     } else {
-                        System.out.println("Received packet SeqNum: " + arrived.getSeqNum());
+                        // Packet arrived
                         arrivalLog.println(arrived.getSeqNum());
                         if (seqNumExpected == arrived.getSeqNum()) {
+                            // Packet is expected, send ack for that packet
                             outFile.println(new String(arrived.getData()));
                             respondPacket = packet.createACK(arrived.getSeqNum());
                             seqNumExpected++;
                         } else {
+                            // Packet is not expected, send ack for most recent packet received
                             respondPacket = packet.createACK(seqNumExpected-1);
                         }
                     }
