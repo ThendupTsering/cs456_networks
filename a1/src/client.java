@@ -45,7 +45,7 @@ public class client {
                         System.out.println("FROM SERVER:" + modifiedSentence);
                         clientSocketUCP.close();
                     } else {
-                        System.out.println("Error! The requisite code specified does not match that of the server.");
+                        System.out.println("Error! The requisite code specified does not match that of the serverGBN.");
                         System.out.println("Exiting.");
                     }
                 } catch (Exception e) {
@@ -54,7 +54,7 @@ public class client {
             }
         } else {
             System.out.println("Error! Illegal number of arguments.");
-            System.out.println("Usage: ./client.sh <server address> <n_port> <req_code> <msg>");
+            System.out.println("Usage: ./client.sh <serverGBN address> <n_port> <req_code> <msg>");
         }
 
     }

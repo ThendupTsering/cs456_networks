@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Run script for the server distributed as a part of 
+#Run script for the serverGBN distributed as a part of
 #Assignment 1
 #Computer Networks (CS 456)
 #
@@ -12,13 +12,13 @@
 #Uncomment exactly one of the following commands depending on implementation
 
 #For C/C++ implementation
-#./server $1
+#./serverGBN $1
 
 #For Java implementation
-java server $1
+java serverGBN $1
 
 #For Python implementation
-#python server.py $1
+#python serverGBN.py $1
 
 #For Ruby implementation
-#ruby server.rb $1
+#ruby serverGBN.rb $1

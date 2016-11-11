@@ -56,7 +56,7 @@ public class server {
             }
         } else {
             System.out.println("Error! Illegal number of arguments.");
-            System.out.println("Usage: ./server.sh <req_code>");
+            System.out.println("Usage: ./serverGBN.sh <req_code>");
         }
     }
 }

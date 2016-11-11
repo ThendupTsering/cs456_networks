@@ -1,0 +1,41 @@
+t
+s
+e
+r
+i
+n
+g
+
+hello sir
+
+sender
+program
+
+you should implement a sender program
+named sender
+its command line input includes the following
+
+upon execution, the sender program should be able to read data from the specified file
+the window size should be set to 10
+
+it should implement the go back n protocol 
+that was discussed in class
+
+t
+h
+e
+n
+d
+u
+p
+
+hahaha
+Hi there
+Thendup
+
+Send me
+haha
+hahahahhaa
+
+
+Hello there thendup, I hope you are doing well!
