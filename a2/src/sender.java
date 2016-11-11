@@ -92,6 +92,7 @@ public class sender {
 
                     // At this point, packet has been received
                     int receivedSeqNum = receivedPacket.getSeqNum();
+                    ackLog.println(receivedSeqNum);
                     if (receivedSeqNum >= base) {
                         // Update base. All packets before receivedSeqNum have been acked
 
